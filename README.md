@@ -8,21 +8,6 @@ The top row shows the original images and the bottom row shows the corresponding
 
 ![Example results](examples/ExampleResultsCropped.png)
 
-<table>
-  <tr>
-    <th>volcano.wav</th>
-    <th>scuba.wav</th>
-    <th>snow.mp3</th>
-    <th>BillyJean.wav</th>
-  </tr>
-  <tr>
-    <td><audio controls src="examples/volcano.wav">volcano.wav</audio></td>
-    <td><audio controls src="examples/scuba.wav">scuba.wav</audio></td>
-    <td><audio controls src="examples/snow.mp3">snow.mp3</audio></td>
-    <td><audio controls src="examples/BillyJean.wav">BillyJean.wav</audio></td>
-  </tr>
-</table>
-
 ## Pipeline
 
 ![Audio-driven image stylization pipeline](examples/Pipeline.png)
@@ -35,3 +20,19 @@ An input image is encoded with the VGG. In parallel, ImageBind extracts an embed
 - **Audio:** A split of the [FSD50K dataset](https://zenodo.org/records/4060432) was used to obtain 10,000 audio clips.
 
 The images and audio clips are paired to train the audio-to-style mapping network.
+
+## Setup
+
+Clone the repository together with its submodules, create a Python environment, and install the ImageBind dependencies:
+
+```bash
+git clone --recurse-submodules <repository-url>
+cd Audio-driven-Image-Stylization
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+python -m pip install --upgrade pip
+python -m pip install -r ImageBind/requirements.txt
+python -m pip install -e ImageBind
+```
+
+The project expects the pretrained AdaIN and mapper checkpoints in the paths configured by `inference.py` before inference can be run. The main scripts are `dataset_creation.py`, `train_mapper.py`, and `inference.py`.
