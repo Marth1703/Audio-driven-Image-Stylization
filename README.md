@@ -21,7 +21,7 @@ An input image is encoded with the VGG. In parallel, ImageBind extracts an embed
 
 The images and audio clips are paired to train the audio-to-style mapping network.
 
-## Setup
+### Setup
 
 Clone the repository together with its submodules, create a Python environment, and install the ImageBind dependencies:
 
